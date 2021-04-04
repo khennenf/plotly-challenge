@@ -1,27 +1,27 @@
-d3.json("samples.json").then((dataFile) => {
+// d3.json("samples.json").then((dataFile) => {
+//     console.log(dataFile)})
 
-    // console.log(dataFile)
-
-    // console.log(dataFile.samples[0])
-
-    data = dataFile.samples
-
-    console.log(data[0]["id"])
-
-    var trace1 = {
-
-        x: data.map(row => row.sample_values),
-        y: data.map(row => row.otu_ids),
-        text: data.map(row => row.otu_lables),
-        name: "Samples",
-        type: "bar",
-        orientation: "h"
-    };
-
-    var plotData = [trace1];
-
-    console.log(plotData)
+function buildPlot(){
+    d3.json("samples.json").then((dataFile) => {
+        var id = dataFile.samples.id;
+        var otu_ids = dataFile.samples.otu_ids;
+        var sample_values = dataFile.samples.sample_values;
+        var otu_lables = dataFile.samples.otu_lables
     
-    Plotly.newPlot("bar", data);
+    var trace1 = {
+        type: "scatter",
+        mode: "lines",
+        name: id,
+        x: otu_ids,
+        y: sample_values,
+        text: otu_lables
+    }
+
+var data = [trace1]
+
+Plotly.newPlot("bar", data);
 
 })
+}
+
+buildPlot(940);
