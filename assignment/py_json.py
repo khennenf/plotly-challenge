@@ -12,5 +12,9 @@ with open('samples.json', 'r') as jsonfile:
     # pprint(metadata)
 
     age_metadata = metadata[1]["age"]
-    pprint(age_metadata)
+    # pprint(age_metadata)
 
+    samples_data = samples_json["samples"]
+    pprint(samples_data)
+
+x: sample_values
