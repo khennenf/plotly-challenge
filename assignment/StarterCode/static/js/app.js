@@ -19,9 +19,11 @@ function buildPlot(){
 
 var data = [trace1]
 
+console.log(data)
+
 Plotly.newPlot("bar", data);
 
-})
+});
 }
 
 buildPlot(940);
