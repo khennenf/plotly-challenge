@@ -14,9 +14,9 @@ d3.json("samples.json").then((dataFile) => {
 
     // var singleMetadata = dataFile.metadata[0]
     // var singleSamples = dataFile.samples[0]
-    var singleSamplesOtuIds = dataFile.samples[0].otu_ids.slice(0, 10)
-    var singleSamplesOtuLabels = dataFile.samples[0].otu_labels.slice(0, 10)
-    var singleSamplesSampleValues = dataFile.samples[0].sample_values.slice(0, 10)
+    var singleSamplesOtuIds = dataFile.samples[10].otu_ids.slice(0, 10)
+    var singleSamplesOtuLabels = dataFile.samples[10].otu_labels.slice(0, 10)
+    var singleSamplesSampleValues = dataFile.samples[10].sample_values.slice(0, 10)
     
     // singleSamplesSampleValues.sort(function compareFunction(firstNum, secondNum) {
     //     return secondNum - firstNum;
@@ -30,16 +30,16 @@ d3.json("samples.json").then((dataFile) => {
 
     var textOTU = 'OTU'
 
+   var textOtuIds = ' ';
+   singleSamplesOtuIds.forEach(id => textOtuIds += 'OTU' + ' ' + id + ',' )        
+   var labeledIds = textOtuIds.split(',', 10)
+   
 
+// for (id in singleSamplesOtuIds) {
+//     textOtuIds += textOTU + ' ' + id
+// }
 
-   let textOtuIds = ' ';
-   singleSamplesOtuIds.forEach(id => textOtuIds += 'OTU' + ' ' + id)        
-   console.log(textOtuIds)
-
-
-
-
-    
+    // console.log(textOtuIds)
 
     // // console.log(singleMetadata)
     // // console.log(singleSamples)
@@ -58,7 +58,8 @@ d3.json("samples.json").then((dataFile) => {
 
     var trace = {
         x: singleSamplesSampleValues,
-        y: singleSamplesOtuIds,
+        y: labeledIds,
+        text: singleSamplesOtuLabels,
         type: "bar",
         orientation: "h"
     }
