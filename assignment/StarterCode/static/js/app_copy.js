@@ -53,6 +53,8 @@ function buildPlot() {
         var allIds = samplesById.id
         // console.log(allIds)
 
+        
+
         var trace = {
         type: "bar",
         orientation: "h",
@@ -80,7 +82,7 @@ function buildPlot() {
 
 buildPlot()
 
-console.log(data)
+
 
 }
 
