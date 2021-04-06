@@ -1,18 +1,9 @@
-d3.select('#selDataset').on("change", getData)
-console.log(testSubId);
-
-var testSubId = 
-
 var option = document.createElement('option');
 option.text = '940'
 option.value = 0
 document.querySelector('#selDataset').add(option, 0)
 
-
-
-
-buildPlot(testSubId)
-
+// buildPlot(testSubId)
 
 function buildPlot() {
 
@@ -32,6 +23,18 @@ d3.json("samples.json").then((dataFile) => {
     singleSamplesOtuIds.forEach(id => textOtuIds += 'OTU' + ' ' + id + ',' )        
     var labeledIds = textOtuIds.split(',', 10)
 
+    d3.select('#selDataset').on("change", optionChanged)
+
+
+    function optionChanged() {
+        var dropdownMenu = d3.select('#selDataset');
+        var dataset = dropdownMenu.property('value');
+        var data = []
+
+    if (dataset == 0) {
+        dataset = testSubId
+    }
+
     var trace = {
         x: singleSamplesSampleValues,
         y: labeledIds,
@@ -40,43 +43,12 @@ d3.json("samples.json").then((dataFile) => {
         orientation: "h"
     }
 
-     var plotData = [trace]
+    var plotData = [trace]
 
     Plotly.newPlot("bar", plotData);
 
-    })
+    }
 
-}
+})
 buildPlot();
-
-
-    // // console.log(singleMetadata)
-    // // console.log(singleSamples)
-    // // console.log(singleSamplesOtuIds)
-    // // console.log(singleSamplesOtuLabels)
-    // // console.log(singleSamplesSampleValues)
-    
-    // console.log(singleSamplesSampleValues)
-    // console.log(singleSamplesOtuIds)
-   
-        // console.log(dataFile.metadata[0])
-    // console.log(dataFile.samples[0])
-
-    // var dataFor940 = dataFile.samples.slice(0,10)
-
-    // console.log(dataFor940[0])
-
-    
-    // var singleMetadata = dataFile.metadata[0]
-    // var singleSamples = dataFile.samples[0]
-
-   
-    // singleSamplesSampleValues.sort(function compareFunction(firstNum, secondNum) {
-    //     return secondNum - firstNum;
-    // });
-
-    // console.log(singleSamplesSampleValues)
-
-    // var singleSamplesSampleValuesTop10 = dataFile.samples[0].sample_values.slice(0, 10)
-
-    // console.log(singleSamplesSampleValuesTop10);
+}
