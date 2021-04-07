@@ -46,13 +46,26 @@ function handleSubmit() {
             var demoDataWFreq = dataFile.metadata[i].wfreq
             console.log(demoDataWFreq)
 
-            var displayDemoData = dataFile.metadata.map(row => row[i])
-            console.log(displayDemoData)
+            var displayDemoData = dataFile.metadata
+            console.log(displayDemoData[i])
 
-        }               
+        const panelFiller =  ( `id: ${demoDataID} <br>
+                                ethnicity: ${demoDataEthnicity} <br>
+                                gender: ${demoDataGender} <br> 
+                                age: ${demoDataAge} <br>
+                                location: ${demoDataLocation} <br>
+                                bbtype: ${demoDataBbType} <br>
+                                wfreq: ${demoDataWFreq}`         
+                            )  
+        document.getElementById("sample-metadata").innerHTML = panelFiller
+                  
+                
+              
+
+                  
             
         
-        )}
+       })
 
 
 
@@ -109,4 +122,4 @@ function handleSubmit() {
 // })
 
 // // buildPlot();
-    
+    }
