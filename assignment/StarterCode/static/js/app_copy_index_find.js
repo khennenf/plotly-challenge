@@ -3,75 +3,44 @@ option.text = '941'
 option.value = 1
 document.querySelector('#selDataset').add(option, 0)
 
-// var select = document.querySelector("#selDataset"); 
-// var options = ["1", "2", "3", "4", "5"]; 
+d3.json("samples.json").then((dataFile) => {
 
-// for(var i = 0; i < options.length; i++) {
-//     var opt = options[i];
+var namesArray = dataFile.names
 
-//     var el = document.createElement("option");
-//     el.text = opt;
-//     el.value = opt;
+var option = document.createElement('option');
 
-//     select.add(el);
-// }​
-
-function addOption(selectbox,text,value )
-
-{var optn = document.createElement("OPTION");
-
-optn.text = text;
-
-optn.value = value;
-
-selectbox.options.add(optn);
-
+function myFunction(key, value) {
+    document.createElement('option')
+    option.text = key
+    option.value = value
+    document.querySelector('#selDataset').add(option, 0)
 }
 
-var month = new Array("January","February","March","April","May","June",
-"July","August","September","October","November","December");
+namesArray.forEach(myFunction)
 
-for (var i=0; i < month.length;++i){
-
-    addOption(document.drop_list.Month_list, month[i], month[i]);
-    
-    }
-
-
+ 
 function handleSubmit() {
 
     d3.event.preventDefault();
 }
-
-
-    
+   
     d3.selectAll("body").on("change", optionChanged);
 
-    
     function optionChanged() {
         var dropdownMenu = d3.selectAll("#selDataset").node();
         var dropdownMenuID = dropdownMenu.id;
         var idValue = dropdownMenu.value;
-
-
-
         d3.json("samples.json").then((dataFile) => {
-            console.log(dataFile)
-        //----------------------
+        var namesArray = dataFile.names
+        subDisplayValues = Object.values(namesArray)
+        var i = idValue
 
-
-
-        //----------------------
-
-            var i = idValue
-
-             })
-
+})
 
 function buildPlot() {
 
     d3.json("samples.json").then((dataFile) => {
-        console.log(dataFile)
+     
 
         var i = idValue       
         var nameSection = dataFile.names
@@ -126,3 +95,4 @@ buildPlot()
 
 }
 
+})

@@ -16,21 +16,25 @@ function handleSubmit() {
 
     d3.event.preventDefault();
 }
-    // var testSubId = d3.select("#selDataset").node().value;
-    // console.log(testSubId);
 
+
+    
     d3.selectAll("body").on("change", optionChanged);
 
+    
     function optionChanged() {
         var dropdownMenu = d3.selectAll("#selDataset").node();
-    
         var dropdownMenuID = dropdownMenu.id;
-    
         var idValue = dropdownMenu.value;
-        // console.log(idValue)
+
+
 
         d3.json("samples.json").then((dataFile) => {
             console.log(dataFile)
+
+    //----------------------
+
+     //----------------------
 
             var i = idValue
 
