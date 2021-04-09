@@ -1,12 +1,12 @@
 
 var option = document.createElement('option');
-option.text = 152
-option.value = 1601
+option.text = 1601
+option.value = 152
 document.querySelector('#selDataset').add(option, 0)
 
 var option = document.createElement('option');
-option.text = 151
-option.value = 1581
+option.text = 1581
+option.value = 151 
 document.querySelector('#selDataset').add(option, 0)
 
 var option = document.createElement('option');
